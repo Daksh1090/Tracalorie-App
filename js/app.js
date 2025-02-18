@@ -1,3 +1,4 @@
+//now i make new branch
 class TrackCalorie {
   constructor() {
     this._calorieLimit = 2000;
@@ -5,7 +6,7 @@ class TrackCalorie {
     this.meal = []
     this.work = []
     this.id = []
-    // This the example of space beetwen number with array
+    // This the example of space beetwen number with arrayss
     this._displayCalorieTotal()
     this._displayCalorieLimit()
     this._displayCalorieConsumed()
