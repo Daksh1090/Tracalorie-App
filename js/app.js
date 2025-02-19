@@ -4,8 +4,7 @@ class TrackCalorie {
     this._totalCalorie = 0
     this.meal = []
     this.work = []
-    this.id = []
-    // This the example of space beetwen number with array
+    
     this._displayCalorieTotal()
     this._displayCalorieLimit()
     this._displayCalorieConsumed()
