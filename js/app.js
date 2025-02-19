@@ -1,3 +1,4 @@
+
 class TrackCalorie {
   constructor() {
     this._calorieLimit = 2000;
@@ -160,6 +161,13 @@ class TrackCalorie {
     
   }
 
+  _reset(){
+     this._totalCalorie = 0;
+     this.meal = []
+     this.work = []
+     this._daisplayCalorieRemaining()
+
+  }
 
   _render(){
     this._displayCalorieTotal()
@@ -201,6 +209,12 @@ class App {
     document.getElementById('meal-items').addEventListener('click', this._removeMeal.bind(this, 'meal'))
 
     document.getElementById('workout-items').addEventListener('click', this._removeMeal.bind(this, 'workout'))
+
+    document.getElementById('filter-meals').addEventListener('keyup',this._filterMeal.bind(this,'meal'))
+
+    document.getElementById('filter-workouts').addEventListener('keyup',this._filterMeal.bind(this,'workout'))
+
+     document.getElementById('reset').addEventListener('click', this._reset.bind(this))
   }
 
   _newItem(type, e){
@@ -236,5 +250,30 @@ class App {
         }
       }
   }
+
+  _filterMeal(type,e){
+     let text = e.target.value;
+     console.log(text)
+     document.querySelectorAll(`#${type}-items .card`).forEach(item => {
+
+          console.log(item)
+          const name = item.firstElementChild.firstElementChild.firstElementChild.textContent
+          console.log(name)
+          if(name.toLowerCase().indexOf(text) !== -1){
+               item.style.display = "block"
+          }else{
+               item.style.display = 'none'
+          }
+     })
+  }
+
+  _reset(){
+     document.getElementById('calories-consumed').innerHTML = 0
+     document.getElementById('calories-burned').innerHTML = 0
+     document.getElementById('calories-total').innerHTML = 0
+     this._tracker._reset()
+  }
+
 }
 const app = new App()
+
